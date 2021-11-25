@@ -1,0 +1,78 @@
+@import url(universals.css);
+
+:root{
+
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-1{
+    background-image: url("../assets/bg-1.png");
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;     
+}
+
+.bg-2{
+    background-image: url("../assets/bg-2.png");
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.upper{
+    z-index: 2;
+}
+
+.clear{
+    text-decoration: none;
+}
+
+.scroll-avail{
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.custom-select{
+    width: 100%;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: var(--light-pink-400);
+ }
+
+ #checkButton{
+    display: none;
+}
+
+#checkButton ~ .bi-eye-slash-fill{
+    display: inline;
+}
+
+#checkButton ~ .bi-eye-fill{
+    display: none;
+}
+
+#checkButton:checked ~ .bi-eye-slash-fill{
+    display: none;
+}
+
+#checkButton:checked ~ .bi-eye-fill{
+    display: inline;
+}
