@@ -1,0 +1,56 @@
+.sidenav{
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    margin-left: -300px;
+    background-color: grey;
+    transition: 0.4s;
+}
+.sidenav-link{
+    font-size: 1.25em;
+    text-decoration: none;
+}
+.sidenav-link:active,
+.sidenav-link:hover{
+    background-color: purple;
+} 
+.sidenav-link::after{
+    border-left: solid 3px gray;   
+}
+.open {
+    transition: 0.4s;
+}
+
+
+.active-nav {
+    margin-left: 0;
+}
+
+.active-cont {
+    margin-left: 300px;
+}
+
+#toggle-btn {
+    background-color: gray;
+    color: #fff;
+}
+
+#toggle-btn:focus {
+    box-shadow: 0 0 0 0 none;
+}
+
+.rotate {
+    transform: rotate(-90deg);
+  
+    /* Legacy vendor prefixes that you probably don't need... */
+    /* Safari */
+    -webkit-transform: rotate(-180deg);
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+    /* IE */
+    -ms-transform: rotate(-90deg);
+    /* Opera */
+    -o-transform: rotate(-90deg);
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  }
