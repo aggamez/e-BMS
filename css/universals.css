@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Oxygen:wght@300;400;700&family=Poppins:wght@500;700&display=swap');
+/*
+    Reference Link:
+    https://javisperez.github.io/tailwindcolorshades/?eminence=6C3082&swirl=cec7bf&natural-gray=878681&monza=c80815&malachite=00cc33
+    &blaze-orange=ff5f00&pharlap=a17a72&shuttle-gray=54626f&smalt=333399&turquoise=09d7c0&ripe-yellow=ffe135
+*/
+
+
+/*
+Colors Used:
+
+-cool gray =    #54626f     shuttle gray
+-true gray =    #878681     natural gray
+-warm gray =    #cec7bf     swirl
+
+-brown =        #a17a72     pharlap
+
+-red =          #c80815     monza
+-orange =       #ff5f00     blaze orange
+-yellow =       #ffe135     ripe yellow
+-green =        #00cc33     malachite
+-cyan =         #09d7c0     turquoise
+-blue =         #333399     smalt
+-violet =       #6C3082     eminence
+*/
+
+:root{
+--gray-50: #f3f2f2;
+--gray-100: #ebeaea;
+--gray-200: #e6e5e5;
+--gray-300: #d0cece;
+--gray-400: #afacac;
+--gray-500: #918d8d;
+--gray-600: #6d6969;
+--gray-700: #494646;
+--gray-800: #413e3e;
+--gray-900: #373434;
+--gray-1000: #272525; 
+
+
+}
+
+/*Font classes, universally available, even with Bootstrap enabled*/
+.inter-300{
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+}
+.inter-500{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+
+.oxygen-300{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 300;
+}
+.oxygen-400{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 400;
+}
+.oxygen-700{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 700;
+}
+
+.poppins-500{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+.poppins-700{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/*Font size class, universally available, even with Bootstrap enabled*/
+.f-xxs{
+    font-size: 10px !important;
+}
+.inter-500{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+
+.oxygen-300{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 300;
+}
+.oxygen-400{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 400;
+}
+.oxygen-700{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 700;
+}
+
+.poppins-500{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+.poppins-700{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+
+/*Color classes, universally available, even with Bootstrap enabled
+  Starts with item color, background color (bg), then border color (bd)*/
+.gray-50{
+    color: var(--gray-50);
+}
+.gray-100{
+    color: var(--gray-100);
+}
+.gray-200{
+    color: var(--gray-200);
+}
+.gray-250{
+    color: var(--gray-250);
+}
+.gray-300{
+    color: var(--gray-300);
+}
+.gray-350{
+    color: var(--gray-350);
+}
+.gray-400{
+    color: var(--gray-400);
+}
+.gray-500{
+    color: var(--gray-500);
+}
+.gray-550{
+    color: var(--gray-550);
+}
+.gray-600{
+    color: var(--gray-600);
+}
+.gray-700{
+    color: var(--gray-700);
+}
+.gray-800{
+    color: var(--gray-800);
+}
+.gray-900{
+    color: var(--gray-900);
+}
+
+.bg-gray-50{
+    background-color: var(--gray-50);
+}
+.bg-gray-100{
+    background-color: var(--gray-100);
+}
+.bg-gray-200{
+    background-color: var(--gray-200);
+}
+.bg-gray-250{
+    background-color: var(--gray-250);
+}
+.bg-gray-300{
+    background-color: var(--gray-300);
+}
+.bg-gray-350{
+    background-color: var(--gray-350);
+}
+.bg-gray-400{
+    background-color: var(--gray-400);
+}
+.bg-gray-500{
+    background-color: var(--gray-500);
+}
+.bg-gray-550{
+    background-color: var(--gray-550);
+}
+.bg-gray-600{
+    background-color: var(--gray-600);
+}
+.bg-gray-700{
+    background-color: var(--gray-700);
+}
+.bg-gray-800{
+    background-color: var(--gray-800);
+}
+.bg-gray-900{
+    background-color: var(--gray-900);
+}
+
+.bd-gray-50{
+    border-color: var(--gray-50)    !important;
+}
+.bd-gray-100{
+    border-color: var(--gray-100)   !important;
+}
+.bd-gray-200{
+    border-color: var(--gray-200)   !important;
+}
+.bd-gray-250{
+    border-color: var(--gray-250)   !important;
+}
+.bd-gray-300{
+    border-color: var(--gray-300)   !important;
+}
+.bd-gray-350{
+    border-color: var(--gray-350)   !important;
+}
+.bd-gray-400{
+    border-color: var(--gray-400)   !important;
+}
+.bd-gray-500{
+    border-color: var(--gray-500)   !important;
+}
+.bd-gray-550{
+    border-color: var(--gray-550)   !important;
+}
+.bd-gray-600{
+    border-color: var(--gray-600)   !important;
+}
+.bd-gray-700{
+    border-color: var(--gray-700)   !important;
+}
+.bd-gray-800{
+    border-color: var(--gray-800)   !important;
+}
+.bd-gray-900{
+    border-color: var(--gray-900)   !important;
+}
+
+
+
