@@ -12,7 +12,7 @@
 
         $adminCheck = $aconn -> query("SELECT * FROM admin")or die($aconn -> error);
 
-        if($adminCheck -> num_rows > 1){
+        if($adminCheck -> num_rows > 0){
             echo    "<script>
                         window.location.href = 'login.php';
                     </script>";
