@@ -42,7 +42,7 @@
 
         $aconn -> query("INSERT INTO admin (adminID, adminName, passwordHash, adminDate)  
             VALUES('$accID', '$accName', '$accPassHash', '$dateTime') ")
-            or die($dconn -> error);
+            or die($aconn -> error);
 
     
 
