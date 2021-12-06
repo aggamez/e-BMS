@@ -58,50 +58,48 @@
         $password = $_POST['pass'];
 
         $userCheck = $aconn -> query("SELECT * from admin WHERE adminName ='$username'") or die(mysqli_error($aconn));
-        $checker = $userCheck -> fetch_assoc();
+        
+        if($userCheck -> num_rows > 0) {
+            $checker = $userCheck -> fetch_assoc();
 
-        $dateTime = $checker['adminDate'];
-        $dateTimeParts = explode(" ", $dateTime);
+            $dateTime = $checker['adminDate'];
+            $dateTimeParts = explode(" ", $dateTime);
 
-        $dateParts = explode("-", $dateTimeParts[0]);
-        $year = $dateParts[0];
+            $dateParts = explode("-", $dateTimeParts[0]);
+            $year = $dateParts[0];
 
-        //16-character ID uniquely made with date and time of creation and first 2 account name
-        $accID = $checker['adminID'];
+            $accID = $checker['adminID'];
+            $passCheck = $checker['passwordHash'];
 
-        $passCheck = $checker['passwordHash'];
+            $charaOne = substr($accID, 0, 1);
+            $charaTri = substr($accID, 2, 1);
+            $charaQua= substr($accID, 3, 1);
+            $charaSev = substr($accID, 6, 1);
+            $charaNin = substr($accID, 8, 1);
+            $charaTen = substr($accID, 9, 1);
+            $salt = $charaOne . $charaTri . $charaQua . $charaSev . $charaNin . $charaTen . $year;
 
-        //Salt = add more security to password, implemented both before and after password string
-        //1st, 3rd, 4th, 7th, 9th,and 10th character of the id, and add year again
-        $charaOne = substr($accID, 0, 1);
-        $charaTri = substr($accID, 2, 1);
-        $charaQua= substr($accID, 3, 1);
-        $charaSev = substr($accID, 6, 1);
-        $charaNin = substr($accID, 8, 1);
-        $charaTen = substr($accID, 9, 1);
-        $salt = $charaOne . $charaTri . $charaQua . $charaSev . $charaNin . $charaTen . $year;
-
-        $passPart = $salt . $password . $salt;
-        $truePass = hash('md5', $passPart);
-
-        echo    "<script>
-                    console.log('$accID');
-                    console.log('$passCheck');
-                    console.log('$dateTime');
-                    console.log('$truePass');
-                </script>";
-
-        if($truePass == $passCheck){
+            $passPart = $salt . $password . $salt;
+            $truePass = hash('md5', $passPart);
+            
+            if($truePass == $passCheck){
+                echo    "<script>
+                        window.alert('Logged In');
+                        window.location.href = 'dashboard.php';
+                        </script>";
+            } else {
+                echo    "<script>
+                        window.alert('Invalid Password');
+                        window.location.href = 'login.php';
+                        </script>";
+            }
+        } else{
             echo    "<script>
-                    window.alert('Logged In');
-                    window.location.href = 'dashboard.php';
-                    </script>";
-        } else {
-            echo    "<script>
-                    window.alert('Invalid Password');
-                    window.location.href = 'login.php';
+                        window.alert('Invalid Username');
+                        window.location.href = 'login.php';
                     </script>";
         }
+        
 
     }  
 ?>
