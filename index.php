@@ -10,7 +10,7 @@
     <?php
         include 'scripts/php/admin.config.php';
 
-        $adminCheck = $aconn -> query("SELECT * FROM data")or die($dconn -> error);
+        $adminCheck = $aconn -> query("SELECT * FROM data")or die($aconn -> error);
 
         if($adminChecker -> num_rows > 0){
             echo    "<script>
