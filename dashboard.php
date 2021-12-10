@@ -14,16 +14,24 @@
 </head>
 <body>
     <!-- navbar -->
-      <nav class="navbar navbar-dark fixed-top bg-cool-gray-900">
-        <div class="d-flex px-2 flex-nowrap">
-          <a class="btn btn-sm bg-cool-gray-600 true-gray-50" data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="sidebar">
-            <span class="bi-list"></span>
-          </a>
-        </div>
-      </nav>
-    <!-- navbar -->
 
-    <!-- sidebar -->
+
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="navbar-brand">
+        <a class=" btn btn-sm bg-cool-gray-600 true-gray-50" data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="sidebar">
+          <span class="bi-list"></span>
+        </a>
+        <a class="brand-text nav-link active d-inline-flex align-middle disable">Barangay Paldo</a>
+
+      </div>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success " type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        
+      </div>
+    </nav>
 
     <div class="offcanvas offcanvas-start sidebar bg-cool-gray-900" tabindex="-1" id="sidebar">
       <div class="offcanvas-body text-sm-start">

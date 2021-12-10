@@ -5,36 +5,8 @@
     --sidebar-width: 340px;
 }
 
-.sidebar {
-    width: var(--sidebar-width);
-  }
-.sidebar-link {
-    display: flex;
-    align-items: center;
-}
-.sidebar-link .right-icon {
-    display: inline-flex;
-}
-.sidebar-link[aria-expanded="true"] .right-icon {
-    transform: rotate(180deg);
+
+.brand-text,.brand-text:hover{
+    color: #10A390;
 }
 
-@media (min-width: 1024px) {
-  body {
-      overflow: auto !important;
-  }
-  main {
-      margin-left: var(--sidebar-width);
-  }
-    /* this is to remove the backdrop */
-  .offcanvas-backdrop::before {
-      display: none;
-  }
-  .sidebar {
-      -webkit-transform: none;
-      transform: none;
-      visibility: visible !important;
-      height: calc(100% - var(--navbar-height));
-      top: var(--navbar-height);
-  }
-}
