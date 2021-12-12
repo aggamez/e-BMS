@@ -143,7 +143,7 @@
                     </div>
                   </div>
 
-                  <div class="col-lg-6 bg-cool-gray-500 text-white">
+                  <div class="col-lg-6 bg-cool-gray-500 text-white rounded-end">
                     <div class="p-5">
                       <div class="row mt-5">
                         <div class="col-md-4 mb-4">
@@ -155,7 +155,7 @@
                         </div>
                         
                         <div class="col-md-8" id="imager">
-                          <input type="file" name="official" accept="image/*" capture="camera">
+                          <input type="file" name="official" accept="image/*" id="pic" capture="camera" onchange="loadfile(event)">
                         </div>
                       </div>
                       <div class="col-md-12 mb-4">
@@ -219,5 +219,11 @@
 
     <script type="text/javascript" src="scripts/js/mdb.min.js"></script>
     <script type="text/javascript"></script>
+    <script>
+      var loadFile = function(event) {
+        var image = document.getElementById('pic');
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
+      </script>
   </body>
 </html>

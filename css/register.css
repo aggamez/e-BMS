@@ -5,3 +5,11 @@
 .input-border .input-border:hover .input-border:focus{
   border-color: #10A390;
 }
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: 10A390
+}
+input:focus {
+  border-color: 10A390
+}
