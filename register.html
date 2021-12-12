@@ -14,9 +14,9 @@
   </head>
 
 
-  <body>
+  <body class="bg-brown-50">
 
-    <section class="h-100 h-custom bg-cool-gray-600 ">
+    <section class="bg-brown-50">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-12">
@@ -25,152 +25,190 @@
                 <div class="row g-0">
                   <div class="col-lg-6">
                     <div class="p-5">
-                      <h3 class="fw-normal mb-5" style="color: #4835d4;"> New Resident Information Form</h3>
-    
+                      <h3 class="fw-normal mb-3" style="color: #10A390;"> New Resident Information Form</h3>
                       <div class="row">
-                        <div class="col-md-6 mb-4 pb-2">
-    
-                          <div class="form-outline">
-                            <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Examplev2">First name</label>
+                        <div class="row">
+                          <div class="row">
+                            <div class="col-md-4 mb-4">
+                              <div class="form-floating">
+                                <input type="text" id="firstName" name="first_name" class="form-control form-control-lg input"
+                                  placeholder="First Name" required />
+                                <label class="form-label" for="firstName">First Name</label>
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-floating ">
+                                <input type="text" id="lastName" name="middle_name" class="form-control form-control-lg input"
+                                  placeholder="Middle Name" required />
+                                <label class="form-label" for="lastName">Middle Name</label>
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-floating ">
+                                <input type="text" id="lastName" name="last_name" class="form-control form-control-lg input"
+                                  placeholder="Last Name" required />
+                                <label class="form-label" for="lastName">Last Name</label>
+                              </div>
+                            </div>
                           </div>
-    
                         </div>
-                        <div class="col-md-6 mb-4 pb-2">
-    
-                          <div class="form-outline">
-                            <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Examplev3">Last name</label>
+
+                        <div class="row">
+                          <div class="row">
+                            <div class="col-md-5 mb-4">
+                              <div class="form-floating">
+                                <div class="form-floating datepicker">
+                                  <input type="date" class="form-control input" id="birth" name="birthdate" required/>
+                                      <label for="birth" class="form-label">Birthday</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 mb-4">
+                              <div class="form-floating">
+                                <select class="form-select input" name="gender" id="gender">
+                                  <option selected disabled>Gender</option>
+                                  <option value="MALE">Male</option>
+                                  <option value="FEMALE">Female</option>
+                                  <option value="PREFER NOT TO SAY">Prefer not to say</option>
+                                </select>
+                              </div>
+                            </div>
                           </div>
-    
                         </div>
-                      </div>
-    
-                      <div class="mb-4 pb-2">
-                        <select class="select">
-                          <option value="1">Position</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                          <option value="4">Four</option>
-                        </select>
-                      </div>
-    
-                      <div class="mb-4 pb-2">
-                        <div class="form-outline">
-                          <input type="text" id="form3Examplev4" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplev4">Position</label>
-                        </div>
-                      </div>
-    
-                      <div class="row">
-                        <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
-    
-                          <div class="form-outline">
-                            <input type="text" id="form3Examplev5" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Examplev5">Bussines Arena</label>
+
+                        <div class="col-md-11 mb-4">
+                          <div class="form-floating">
+                            <input type="text" id="bop" name="bop" class="form-control form-control-lg input"
+                              placeholder="Place of Birth" required />
+                            <label class="form-label" for="bop">Place of Birth</label>
                           </div>
-    
                         </div>
-                        <div class="col-md-6">
-    
-                          <select class="select">
-                            <option value="1">Employees</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
-                          </select>
-    
+
+                        <div class="row">
+                          <div class="row">
+                            <div class="col-md-4 mb-4">
+                              <div class="form-floating">
+                                <select class="form-select input" name="civil_status" id="civil_status">
+                                  <option selected disabled>Civil Status</option>
+                                  <option value="MALE">Single</option>
+                                  <option value="FEMALE">Married</option>
+                                  <option value="Separated">Separated</option>
+                                  <option value="Widowed">Widowed</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-floating">
+                                <input type="text" id="nationality" name="nationality" class="form-control form-control-lg input"
+                                  placeholder="nationality" required />
+                                <label class="form-label" for="bop">Nationality</label>
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-floating">
+                                <input type="text" id="nationality" name="nationality" class="form-control form-control-lg input input-border" placeholder="nationality" required />
+                                <label class="form-label" for="bop">Religion</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="row">
+                            <div class="col-md-6 mb-4">
+                              <div class="form-floating">
+                                <input type="text" id="Occupation" name="Occupation" class="form-control form-control-lg input"
+                                  placeholder="Occupation" required />
+                                <label class="form-label" for="bop">Occupation</label>
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                              <div class="form-floating">
+                                <select class="form-select input" name="Sector" id="Sector">
+                                  <option selected disabled>Sector</option>
+                                  <option value="MALE">Single</option>
+                                  <option value="FEMALE">Married</option>
+                                  <option value="Separated">Separated</option>
+                                  <option value="Widowed">Widowed</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                      
+                      
     
                     </div>
                   </div>
-                  <div class="col-lg-6 bg-indigo text-white">
+
+                  <div class="col-lg-6 bg-cool-gray-500 text-white">
                     <div class="p-5">
-                      <h3 class="fw-normal mb-5">Contact Details</h3>
-    
-                      <div class="mb-4 pb-2">
-                        <div class="form-outline form-white">
-                          <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplea2">Street + Nr</label>
+                      <div class="row mt-5">
+                        <div class="col-md-4 mb-4">
+                          <div class="form-floating form-white">
+                            <input type="text" id="Alias" name="Alias" class="form-control form-control-lg input"
+                              placeholder="Alias" required />
+                            <label class="form-label" for="Alias">Alias</label>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-8" id="imager">
+                          <input type="file" name="official" accept="image/*" capture="camera">
                         </div>
                       </div>
-    
-                      <div class="mb-4 pb-2">
-                        <div class="form-outline form-white">
-                          <input type="text" id="form3Examplea3" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplea3">Additional Information</label>
+                      <div class="col-md-12 mb-4">
+                        <div class="form-floating">
+                          <label for="exampleFormControlTextarea1">Face Marks</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                       </div>
-    
                       <div class="row">
-                        <div class="col-md-5 mb-4 pb-2">
-    
-                          <div class="form-outline form-white">
-                            <input type="text" id="form3Examplea4" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Examplea4">Zip Code</label>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-floating">
+                            <input type="text" id="spouse" name="spouse" class="form-control form-control-lg input"
+                              placeholder="spouse" required />
+                            <label class="form-label" for="spouse">Spouse's Name</label>
                           </div>
-    
                         </div>
-                        <div class="col-md-7 mb-4 pb-2">
-    
-                          <div class="form-outline form-white">
-                            <input type="text" id="form3Examplea5" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Examplea5">Place</label>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-floating">
+                            <input type="text" id="spouse_occupation" name="spouse_occupation" class="form-control form-control-lg input"
+                              placeholder="spouse_occupation" required />
+                            <label class="form-label" for="spouse_occupation">Spouse's Occupation</label>
                           </div>
-    
                         </div>
                       </div>
-    
-                      <div class="mb-4 pb-2">
-                        <div class="form-outline form-white">
-                          <input type="text" id="form3Examplea6" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplea6">Country</label>
-                        </div>
-                      </div>
-    
                       <div class="row">
-                        <div class="col-md-5 mb-4 pb-2">
-    
-                          <div class="form-outline form-white">
-                            <input type="text" id="form3Examplea7" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Examplea7">Code +</label>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-floating">
+                            <input type="text" id="email" name="email" class="form-control form-control-lg input"
+                              placeholder="email" required />
+                            <label class="form-label" for="email">Email Address</label>
                           </div>
-    
                         </div>
-                        <div class="col-md-7 mb-4 pb-2">
-    
-                          <div class="form-outline form-white">
-                            <input type="text" id="form3Examplea8" class="form-control form-control-lg" />
-                            <label class="form-label" for="form3Examplea8">Phone Number</label>
+                        <div class="col-md-6 mb-4">
+                          <div class="form-floating">
+                            <input type="text" id="Number" name="Number" class="form-control form-control-lg input"
+                              placeholder="Number" required />
+                            <label class="form-label" for="Number">Phone Number</label>
                           </div>
-    
                         </div>
                       </div>
-    
-                      <div class="mb-4">
-                        <div class="form-outline form-white">
-                          <input type="text" id="form3Examplea9" class="form-control form-control-lg" />
-                          <label class="form-label" for="form3Examplea9">Your Email</label>
-                        </div>
+                      
+                      
+                      <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Register</button>
                       </div>
-    
-                      <div class="form-check d-flex justify-content-start mb-4 pb-3">
-                        <input
-                          class="form-check-input me-3"
-                          type="checkbox"
-                          value=""
-                          id="form2Example3c"
-                        />
-                        <label class="form-check-label text-white" for="form2Example3">
-                          I do accept the <a href="#!" class="text-white"><u>Terms and Conditions</u></a> of your site.
-                        </label>
-                      </div>
-    
-                      <button type="button" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Register</button>
-    
-                    </div>
+                    
                   </div>
+
+
+
+
+
+
                 </div>
               </div>
             </div>
