@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 02:00 PM
+-- Generation Time: Dec 14, 2021 at 03:26 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminID`, `adminName`, `passwordHash`, `adminDate`) VALUES
-('ad20211206201640', 'admin', 'c4e571a5d215d142b66f6dfd4c94f279', '2021-12-06 20:16:40');
+('ad20211214101157', 'admin', '9f756378032582b389250d39f6f6945f', '2021-12-14 10:11:57');
 
 -- --------------------------------------------------------
 
