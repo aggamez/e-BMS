@@ -34,10 +34,6 @@ $brgySpsh = $xml-> splash;
         <a class="brand-text nav-link active d-inline-flex align-middle disable">Barangay <?php echo $brgyName ?></a>
 
       </div>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success " type="submit"><i class="bi bi-search"></i></button>
-        </form>
         
       </div>
     </nav>
@@ -57,7 +53,7 @@ $brgySpsh = $xml-> splash;
               </div>
             </li>
             <li>
-              <a href="dashboard.main.php" class="nav-link px-3 active">
+              <a href="dashboard.main.php" class="nav-link px-3 ">
                 <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                 <span>Dashboard</span>
               </a>
@@ -134,9 +130,15 @@ $brgySpsh = $xml-> splash;
               </a>
             </li>
             <li>
-              <a href="dashboard.adconfig.php" class="nav-link px-3">
+              <a href="dashboard.adconfig.php" class="nav-link px-3 active">
                 <span class="me-2"><i class="bi bi-table"></i></span>
                 <span>Config</span>
+              </a>
+            </li>
+            <li>
+              <a href="logout.php" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Log-out</span>
               </a>
             </li>
           </ul>

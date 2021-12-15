@@ -100,6 +100,7 @@
                     </script>";
         }
         
+        setcookie('admin', $username, time() + (86400 *30), "/");
 
     }  
 
@@ -339,7 +340,7 @@
         }
 
         // Allow certain file formats
-        if($imageFileType != "png") {
+        if($imageFileType != "png" && $imageFileType != "jpg" && $imageFileType != "jpeg") {
         echo    "<script>
         window.alert('Sorry, only PNG files are allowed.');
         window.location.href = 'dashboard.adconfig.php';
@@ -369,4 +370,337 @@
         }
 
     }
+
+
+    if(isset($_POST['addResident'])){
+        $familyName = $_POST['familyName'];
+        $givenName = $_POST['givenName'];
+        $middleName = $_POST['middleName'];
+        $alias = $_POST['alias'];
+        $faceMarks = $_POST['faceMarks'];
+        $birthDate = $_POST['birthDate'];
+        $birthPlace = $_POST['birthPlace'];
+        $sex = $_POST['sex'];
+        $civilStatus = $_POST['civilStatus'];
+        $nationality = $_POST['nationality'];
+        $faith = $_POST['faith'];
+        $occupation = $_POST['occupation'];
+        $sector = $_POST['sector'];
+        $spouseName = $_POST['spouseName'];
+        $spouseOccu = $_POST['spouseOccu'];
+        $voterState = $_POST['voterState'];
+        $cityAdd = $_POST['cityAdd'];
+        $provAdd = $_POST['provAdd'];
+        $purok = $_POST['purok'];
+        $homeNumbOne = $_POST['homeNumbOne'];
+        $homeNumbTwo = $_POST['homeNumbTwo'];
+        $mobiNumbOne = $_POST['mobiNumbOne'];
+        $mobiNumbTwo = $_POST['mobiNumbTwo'];
+        $email = $_POST['email'];
+        $resType = $_POST['resType'];
+        $resState = $_POST['resState'];
+
+        if($spouseName == null || $spouseName == ""){
+            $spouseName = "N/A";
+        }
+
+        if($spouseOccu == null || $spouseOccu == ""){
+            $spouseOccu = "N/A";
+        }
+
+        $processedBy = $_COOKIE['admin'];
+
+        $dateTime = new DateTime();
+        $dateTime = $dateTime->format('Y-m-d H:i:s');
+        $dateTimeParts = explode(" ", $dateTime);
+
+        $dateParts = explode("-", $dateTimeParts[0]);
+        $year = $dateParts[0];
+        $month = $dateParts[1];
+        $day = $dateParts[2];
+
+        $timeParts = explode(":", $dateTimeParts[1]);
+        $hour = $timeParts[0];
+        $minute = $timeParts[1];
+        $second = $timeParts[2];
+
+
+
+
+        $transactionID = $year . $month . $day . $hour . $minute . $second;
+
+
+        $resiCheck = $aconn -> query("SELECT * from residents") or die(mysqli_error($aconn));
+        if ($resiCheck -> num_rows > 0){
+            $idCheck = $aconn -> query("SELECT MAX(id) as high from residents") or die(mysqli_error($aconn));
+
+            $idCount = $idCheck -> fetch_assoc();
+            $id = $idCount['high'];
+            $id = $id + 1;
+
+
+        } else{
+            $id = $year . "0001";
+        }
+
+        $target_dir = "image/";
+            $target_file = $target_dir . basename($_FILES["resImg"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["resImg"]["tmp_name"]);
+            if($check !== false) {
+                $uploadOk = 1;
+            } else {
+            $uploadOk = 0;
+            }
+
+            if ($_FILES["resImg"]["size"] > 50000000){
+                $uploadOk = 0;
+            }
+
+            if($imageFileType != "png") {
+                    echo    "<script>
+                            window.alert('Only PNG images!');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                $uploadOk = 0;
+                }
+
+                if ($uploadOk == 0) {
+                    echo    "<script>
+                            window.alert('Upload Incomplete!');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                    // if everything is ok, try to upload file
+                    } else {
+                    $fileName = $target_dir . $id . ".png";
+
+                    if (move_uploaded_file($_FILES["resImg"]["tmp_name"], $fileName)) {
+
+                        $aconn -> query("INSERT INTO residents 
+                        VALUES('$id', '$familyName', '$givenName', '$middleName', '$alias', '$faceMarks', '$birthDate', '$birthPlace', '$sex', '$civilStatus'
+                                , '$nationality', '$faith', '$occupation', '$sector', '$spouseName', '$spouseOccu', '$voterState', '$cityAdd', '$provAdd', '$purok'
+                                , '$homeNumbOne', '$homeNumbTwo', '$mobiNumbOne', '$mobiNumbTwo', '$email', '$resType', '$resState', '$dateTime', '$processedBy', '$transactionID', '$fileName')") 
+                        or die(mysqli_error($aconn));
+
+                        $string = "Created Resident " . $id . " " . $transactionID; 
+
+                        $aconn -> query("INSERT INTO logs (timestamp, action, processedBy) VALUES('$dateTime','$string','$processedBy')") or die(mysqli_error($aconn));
+                        echo    "<script>
+                            window.alert('Edit Complete');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                    } else {
+                        echo    "<script>
+                            window.alert('Error!');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                    }
+                    }
+
+    }
+
+    if(isset($_POST['editResident'])){
+        $familyName = $_POST['familyName'];
+        $givenName = $_POST['givenName'];
+        $middleName = $_POST['middleName'];
+        $alias = $_POST['alias'];
+        $faceMarks = $_POST['faceMarks'];
+        $birthDate = $_POST['birthDate'];
+        $birthPlace = $_POST['birthPlace'];
+        $sex = $_POST['sex'];
+        $civilStatus = $_POST['civilStatus'];
+        $nationality = $_POST['nationality'];
+        $faith = $_POST['faith'];
+        $occupation = $_POST['occupation'];
+        $sector = $_POST['sector'];
+        $spouseName = $_POST['spouseName'];
+        $spouseOccu = $_POST['spouseOccu'];
+        $voterState = $_POST['voterState'];
+        $cityAdd = $_POST['cityAdd'];
+        $provAdd = $_POST['provAdd'];
+        $purok = $_POST['purok'];
+        $homeNumbOne = $_POST['homeNumbOne'];
+        $homeNumbTwo = $_POST['homeNumbTwo'];
+        $mobiNumbOne = $_POST['mobiNumbOne'];
+        $mobiNumbTwo = $_POST['mobiNumbTwo'];
+        $email = $_POST['email'];
+        $resType = $_POST['resType'];
+        $resState = $_POST['resState'];
+
+        if($spouseName == null || $spouseName == ""){
+            $spouseName = "N/A";
+        }
+
+        if($spouseOccu == null || $spouseOccu == ""){
+            $spouseOccu = "N/A";
+        }
+
+        $processedBy = $_COOKIE['admin'];
+
+        $dateTime = new DateTime();
+        $dateTime = $dateTime->format('Y-m-d H:i:s');
+        $dateTimeParts = explode(" ", $dateTime);
+
+        $dateParts = explode("-", $dateTimeParts[0]);
+        $year = $dateParts[0];
+        $month = $dateParts[1];
+        $day = $dateParts[2];
+
+        $timeParts = explode(":", $dateTimeParts[1]);
+        $hour = $timeParts[0];
+        $minute = $timeParts[1];
+        $second = $timeParts[2];
+
+        $transactionID = $year . $month . $day . $hour . $minute . $second;
+
+        $target_dir = "image/";
+            $target_file = $target_dir . basename($_FILES["resImg"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["resImg"]["tmp_name"]);
+            if($check !== false) {
+                $uploadOk = 1;
+            } else {
+            $uploadOk = 0;
+            }
+
+            if ($_FILES["resImg"]["size"] > 50000000){
+                $uploadOk = 0;
+            }
+
+            if($imageFileType != "png") {
+                    echo    "<script>
+                            window.alert('Only PNG images!');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                $uploadOk = 0;
+                }
+
+                if ($uploadOk == 0) {
+                    echo    "<script>
+                            window.alert('Upload Incomplete!');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                    // if everything is ok, try to upload file
+                    } else {
+                    $fileName = $target_dir . $id . ".png";
+
+                    if (move_uploaded_file($_FILES["resImg"]["tmp_name"], $fileName)) {
+                        echo    "<script>
+                            window.alert('Edit Complete');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                    } else {
+                        echo    "<script>
+                            window.alert('Error!');
+                            window.location.href = 'dashboard.people.php';
+                            </script>";
+                }
+                }
+
+        $userChecker = $dconn -> query("SELECT * FROM residents WHERE id = '$id'")or die($dconn -> error);
+        $userValidator = $userChecker -> fetch_assoc();
+
+        if($givenName != $userValidator['givenName']){
+            $dconn -> query("UPDATE residents SET givenName = '$givenName' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($familyName != $userValidator['familyName']){
+            $dconn -> query("UPDATE residents SET familyName = '$familyName' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($middleName != $userValidator['middleName']){
+            $dconn -> query("UPDATE residents SET middleName = '$middleName' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($alias != $userValidator['alias']){
+            $dconn -> query("UPDATE residents SET alias = '$alias' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($faceMarks != $userValidator['faceMarks']){
+            $dconn -> query("UPDATE residents SET faceMarks = '$faceMarks' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($yearLvl != $userValidator['yearLevel']){
+            $dconn -> query("UPDATE residents SET familyName = '$yearLvl' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($program != $userValidator['program']){
+            $dconn -> query("UPDATE residents SET program = '$program' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($email != $userValidator['email']){
+            $dconn -> query("UPDATE residents SET email = '$email' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($contact != $userValidator['contactNumber']){
+            $dconn -> query("UPDATE residents SET contactNumber = '$contact' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($sex != $userValidator['sex']){
+            $dconn -> query("UPDATE residents SET sex = '$sex' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($date != $userValidator['birthDate']){
+            $dconn -> query("UPDATE residents SET birthDate = '$date' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        if($pass != $userValidator['pass']){
+            $dconn -> query("UPDATE residents SET pass = '$pass' WHERE id = '$id'")or die($dconn -> error);
+        }else{
+        }
+
+        echo "<script>
+                alert('Values edited!');
+                window.location.replace('datalog.php');
+        </script>";
+
+    }
+
+    if(isset($_POST['deleteResident'])){
+        $resID = $_POST['id'];
+
+        $processedBy = $_COOKIE['admin'];
+
+        $dateTime = new DateTime();
+        $dateTime = $dateTime->format('Y-m-d H:i:s');
+        $dateTimeParts = explode(" ", $dateTime);
+
+        $dateParts = explode("-", $dateTimeParts[0]);
+        $year = $dateParts[0];
+        $month = $dateParts[1];
+        $day = $dateParts[2];
+
+        $timeParts = explode(":", $dateTimeParts[1]);
+        $hour = $timeParts[0];
+        $minute = $timeParts[1];
+        $second = $timeParts[2];
+
+        $transactionID = $year . $month . $day . $hour . $minute . $second;
+
+        $aconn -> query("DELETE from residents WHERE id = '$resID'") or die($aconn -> error);
+
+        $string = "Deleted Resident " . $resID . " " . $transactionID; 
+
+        $aconn -> query("INSERT INTO logs (timestamp, action, processedBy) VALUES('$dateTime','$string','$processedBy')") or die(mysqli_error($aconn));
+
+            echo "<script>
+                alert('Resident deleted!');
+                window.location.replace('dashboard.people.php');
+            </script>";
+    } 
 ?>

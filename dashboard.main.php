@@ -24,10 +24,12 @@ $brgySpsh = $xml-> splash;
 
 
   <script src="scripts/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/js/dashboard.controls.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
+  <script src="scripts/js/dashboard.controls.js"></script>
   <!-- navbar -->
   <nav class="navbar navbar-dark bg-dark" tabindex="2">
       <div class="container-fluid">
@@ -38,10 +40,7 @@ $brgySpsh = $xml-> splash;
         <a class="brand-text nav-link active d-inline-flex align-middle disable">Barangay <?php echo $brgyName ?></a>
 
       </div>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success " type="submit"><i class="bi bi-search"></i></button>
-        </form>
+
         
       </div>
     </nav>
@@ -141,6 +140,12 @@ $brgySpsh = $xml-> splash;
               <a href="dashboard.adconfig.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-table"></i></span>
                 <span>Config</span>
+              </a>
+            </li>
+            <li>
+              <a href="logout.php" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Log-out</span>
               </a>
             </li>
           </ul>
@@ -331,7 +336,7 @@ $brgySpsh = $xml-> splash;
   </main>
   <!-- main content -->
 
-  <script src="scripts/js/dashboard.controls.js"></script>
+  
 </body>
 
 </html>

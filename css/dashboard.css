@@ -27,3 +27,7 @@
     width: 200px;
     object-fit: contain;
 }
+
+.custom-select{
+    width: auto;
+}
