@@ -10,3 +10,20 @@
     color: #10A390;
 }
 
+.clear{
+    text-decoration: none;
+}
+
+.table-height{
+    height: 375px;
+}
+
+.row-height{
+    height: 75px;
+}
+
+.logo{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}

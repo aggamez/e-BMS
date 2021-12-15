@@ -1,7 +1,13 @@
 <?php
-    include 'scripts/php/admin.actions.php'
+    include 'scripts/php/admin.actions.php';
+
+
+    $xml=simplexml_load_file("configure.xml") or die("Error: Cannot create object");
+    $brgySpsh = $xml-> splash;
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +86,7 @@
                     "
                   >
                     <img
-                      src="image/logo.png"
+                      src="<?php echo $brgySpsh; ?>"
                       class="img-fluid"
                       alt="Sample image"
                     />

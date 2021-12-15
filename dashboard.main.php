@@ -1,26 +1,41 @@
+<?php
+$xml=simplexml_load_file("configure.xml") or die("Error: Cannot create object");
+
+$brgyName = $xml-> name;
+$brgyAddr = $xml-> address;
+$brgyProf = $xml-> profile;
+$brgySpsh = $xml-> splash;
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/dashboard.css">
 
-    <script src="scripts/js/bootstrap.bundle.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+
+
+  <script src="scripts/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-dark bg-dark">
+  <!-- navbar -->
+  <nav class="navbar navbar-dark bg-dark" tabindex="2">
       <div class="container-fluid">
         <div class="navbar-brand">
         <a class=" btn btn-sm bg-cool-gray-600 true-gray-50" data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="sidebar">
           <span class="bi-list"></span>
         </a>
-        <a class="brand-text nav-link active d-inline-flex align-middle disable">Barangay Paldo</a>
+        <a class="brand-text nav-link active d-inline-flex align-middle disable">Barangay <?php echo $brgyName ?></a>
 
       </div>
         <form class="d-flex">
@@ -34,6 +49,11 @@
     <div class="offcanvas offcanvas-start sidebar bg-cool-gray-900" tabindex="-1" id="sidebar">
       <div class="offcanvas-body text-sm-start">
       <nav class="navbar-dark">
+        <div class="container d-flex flex-column align-items-center justify-content-center true-gray-100">
+            <img src="<?php echo $brgyProf;?>" alt="profile image" class="logo">
+            <h5>Barangay <?php echo $brgyName?></h5>
+            <p class="text-break text-center w-75"><?php echo $brgyAddr?></p>
+        </div>
           <ul class="navbar-nav">
             <li>
               <div class="warm-gray-50 small fw-bold text-uppercase px-3">
@@ -41,14 +61,14 @@
               </div>
             </li>
             <li>
-              <a href="#" class="nav-link px-3 active">
+              <a href="dashboard.main.php" class="nav-link px-3 active">
                 <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                 <span>Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+              <a href="dashboard.status.php" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
                 <span>Barangay Status</span>
               </a>
             </li>
@@ -64,7 +84,7 @@
                 data-bs-toggle="collapse"
                 href="#residents"
               >
-                <span class="me-2"><i class="bi bi-layout-split"></i></span>
+                <span class="me-2"><i class="bi bi-person-circle"></i></span>
                 <span>Resident Information</span>
                 <span class="ms-auto">
                   <span class="right-icon">
@@ -75,7 +95,7 @@
               <div class="collapse" id="residents">
                 <ul class="navbar-nav ps-3">
                   <li>
-                    <a href="#" class="nav-link px-3">
+                    <a href="dashboard.people.php" class="nav-link px-3">
                       <span class="me-2"
                         ><i class="bi bi-speedometer2"></i
                       ></span>
@@ -83,11 +103,11 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="nav-link px-3">
+                    <a href="dashboard.violations.php" class="nav-link px-3">
                       <span class="me-2"
                         ><i class="bi bi-speedometer2"></i
                       ></span>
-                      <span>Blotter Records</span>
+                      <span>Violation Records</span>
                     </a>
                   </li>
                 </ul>
@@ -95,38 +115,15 @@
             </li>
             <li>
               <a
-                class="nav-link px-3 sidebar-link"
+                class="nav-link px-3"
                 data-bs-toggle="collapse"
-                href="#issuance"
+                href="#issue"
               >
                 <span class="me-2"><i class="bi bi-layout-split"></i></span>
-                <span>Issuances</span>
+                <span>Issue Certificate</span>
                 <span class="ms-auto">
-                  <span class="right-icon">
-                    <i class="bi bi-chevron-down"></i>
-                  </span>
                 </span>
               </a>
-              <div class="collapse" id="issuance">
-                <ul class="navbar-nav ps-3">
-                  <li>
-                    <a href="#" class="nav-link px-3">
-                      <span class="me-2"
-                        ><i class="bi bi-speedometer2"></i
-                      ></span>
-                      <span>Settlement Records</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link px-3">
-                      <span class="me-2"
-                        ><i class="bi bi-speedometer2"></i
-                      ></span>
-                      <span>Issue Certificate</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </li>
             <li class="my-2"><hr class="dropdown-divider bg-light" /></li>
             <li>
@@ -135,13 +132,13 @@
               </div>
             </li>
             <li>
-              <a href="#" class="nav-link px-3">
+              <a href="dashboard.admins.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-graph-up"></i></span>
                 <span>Accounts</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-3">
+              <a href="dashboard.adconfig.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-table"></i></span>
                 <span>Config</span>
               </a>
@@ -149,17 +146,12 @@
           </ul>
       </div>
     </div>
-    
-    
+  <!-- sidebar -->
 
-    
 
-    <!-- sidebar -->
-
-    
-    <!-- main content -->
-    <main>
-      <div class="container main" id="main">
+  <!-- main content -->
+  <main>
+    <div class="container main" id="main">
         <div class="container-fluid mt-3">
 
         <!-- Page Heading -->
@@ -241,16 +233,13 @@
                 <div class="row">
                     <!-- Total Registerd Population Card Example -->
                     <div class="col-xl-12 col-md-6 mb-2">
-                        <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card border-left-primary bg-true-gray-100 shadow h-100 py-2 text-center">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Total Registerd Population</div>
+                                        <div class="font-weight-bold blue-400 text-uppercase mb-1">
+                                            Total Registered Population</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">22</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -261,16 +250,13 @@
                 <div class="row">
                     <!-- Male Card Example -->
                     <div class="col-xl-6 col-md-6 mb-2">
-                        <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card border-left-success bg-true-gray-100 shadow h-100 py-2 text-center">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <div class="font-weight-bold text-success text-uppercase mb-1">
                                             Male</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">11</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -279,16 +265,13 @@
 
                     <!-- Female Card Example -->
                     <div class="col-xl-6 col-md-6 mb-2">
-                        <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card border-left-success bg-true-gray-100 shadow h-100 py-2 text-center">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <div class="font-weight-bold text-success text-uppercase mb-1">
                                             Female</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">11</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -298,16 +281,13 @@
                 <div class="row">
                     <!-- Registered Voters Card Example -->
                     <div class="col-xl-12 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card border-left-warning bg-true-gray-100 shadow h-100 py-2 text-center">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        <div class="font-weight-bold text-warning text-uppercase mb-1">
                                             Registered Voters</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">16</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -347,9 +327,11 @@
             </div>
         </div>
         </div>  
-      </div>
-    </main>
-    <!-- main content -->
+    </div>
+  </main>
+  <!-- main content -->
 
+  <script src="scripts/js/dashboard.controls.js"></script>
 </body>
+
 </html>
