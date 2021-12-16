@@ -71,7 +71,7 @@
 
                                 $positions = $aconn -> query("SELECT * from purok") or die(mysqli_error($aconn));
                                 while ($data = $positions -> fetch_assoc()): ?>
-                                <option value="">Position</option>
+                                <option value="<?php echo $data['id'];?>" <?php if($row['position'] == $data['name']) echo ' selected="selected"'; ?>><?php echo $data['name'];?></option>
                                 <?php endwhile;?>
                             </select>
                       </div> 

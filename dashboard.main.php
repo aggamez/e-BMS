@@ -6,6 +6,7 @@ $brgyAddr = $xml-> address;
 $brgyProf = $xml-> profile;
 $brgySpsh = $xml-> splash;
 
+
 ?>
 
 
@@ -160,6 +161,7 @@ $brgySpsh = $xml-> splash;
         <!-- Content Row -->
         <div class="row">
             <div class="col-xl-8 col-md-6 mb-3">
+              
                 <table class="table table-striped table-hover">
                 <thead class="table-dark">
                     <tr>

@@ -290,7 +290,7 @@ $brgySpsh = $xml-> splash;
     </div>
 
     <div class="modal fade" id="edit-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">Edit Admin</h5>
@@ -304,7 +304,7 @@ $brgySpsh = $xml-> splash;
     </div>
 
     <div class="modal fade" id="del-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">Delete Admin</h5>
@@ -335,7 +335,7 @@ $brgySpsh = $xml-> splash;
             $('.edit').click(function() {
                 var uid = $(this).data('id');
                 $.ajax({
-                    url: 'scripts/php/.edit.php',
+                    url: 'scripts/php/admin.edit.php',
                     type: 'post',
                     data: {uid: uid},
                     success: function(response){

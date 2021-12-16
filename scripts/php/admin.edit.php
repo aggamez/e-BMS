@@ -3,7 +3,6 @@
 
     $id = $_POST['uid'];
 
-
     $admin = $aconn -> query("SELECT * from admin WHERE adminID = '$id'") or die($aconn -> error);
     while($row = $admin -> fetch_assoc()) { 
         ?>
@@ -40,6 +39,13 @@
                           <input type="text" class="form-control bg-gray-50 border-2 bd-light-pink-500 inter-500" 
                           id="middleName" name="middleName" placeholder="Middle Name"  value="<?php echo $row['resMiddleName'] ?>" readonly>
                       </div>
+                      <div class="input-group">
+                          <div class="input-group-text rounded-0 rounded-start bg-gray-300 border-2 bd-light-pink-500">
+                              <i class="bi bi-card-text"></i>                   
+                          </div>
+                          <input type="text" class="form-control bg-gray-50 border-2 bd-light-pink-500 inter-500" 
+                          id="id" name="id" placeholder="ID"  value="<?php echo $row['adminID'] ?>" readonly>
+                      </div>
                     </div>
                   </div>
 
@@ -50,7 +56,7 @@
                               <i class="bi bi-card-text"></i>                   
                           </div>
                           <input type="text" class="form-control bg-gray-50 border-2 bd-light-pink-500 inter-500" 
-                          id="alias" name="alias" placeholder="Alias" value="<?php echo $row['resID'] ?>" readonly>
+                          id="resID" name="resID" placeholder="resID" value="<?php echo $row['resID'] ?>" readonly>
                       </div>
                         <div class="input-group">
                           <div class="input-group-text rounded-0 rounded-start bg-gray-300 border-2 bd-light-pink-500">
@@ -77,7 +83,7 @@
                                 <?php 
                                 include 'scripts/php/admin.actions.php';
 
-                                $positions = $aconn -> query("SELECT * from purok") or die(mysqli_error($aconn));
+                                $positions = $aconn -> query("SELECT * from positions") or die(mysqli_error($aconn));
                                 while ($data = $positions -> fetch_assoc()): ?>
                                 <option value="<?php echo $data['id']?>"><?php echo $data['name']?></option>
                                 <?php endwhile;?>

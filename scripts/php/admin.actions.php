@@ -800,19 +800,16 @@
     }  
     
     if(isset($_POST['editAdmin'])){
-        $resID = $_POST['resID'];
+        $resID = $_POST['id'];
 
         $residents = $aconn -> query("SELECT * FROM residents where id='$resID'") or die($aconn -> error);
         $list = $residents -> fetch_assoc();
 
-        $resFamName = $list["familyName"];
-        $resGivenName = $list["givenName"];
-        $resMiddleName = $list["middleName"];
-        $accName = $list["alias"];
+        $adminName = $_POST["adminName"];
 
-        $position = "";
+        $position = $_POST['position'];
 
-        $accPass = "admin";
+        $accPass = $_POST['pass'];
 
         $dateTime = date("Y-m-d H:i:s");
         $dateTimeParts = explode(" ", $dateTime);
@@ -827,7 +824,7 @@
         $min = $timeParts[1];
         $sec = $timeParts[2];
 
-        $nameSlice = substr($accName, 0, 2);
+        $nameSlice = substr($adminName, 0, 2);
 
         //16-character ID uniquely made with date and time of creation and first 2 account name
         $accID = $nameSlice . $year . $month . $day . $hour . $min . $sec;
@@ -848,44 +845,31 @@
         $accPassHash = hash('md5', $passPart);
 
 
-        $userChecker = $aconn -> query("SELECT * FROM admin WHERE adminID = '$id'")or die($aconn -> error);
+        $userChecker = $aconn -> query("SELECT * FROM admin WHERE adminID = '$resID'")or die($aconn -> error);
         $userValidator = $userChecker -> fetch_assoc();
 
-        if($resFamName != $userValidator['resFamName']){
-            $aconn -> query("UPDATE residents SET resFamName = '$resFamName' WHERE id = '$id'")or die($aconn -> error);
+        if($adminName != $userValidator['adminName']){
+            $aconn -> query("UPDATE admin SET adminName = '$adminName' WHERE adminID = '$resID'")or die($aconn -> error);
         }else{
         }
 
-        if($resGivenName != $userValidator['resGivenName']){
-            $aconn -> query("UPDATE residents SET resGivenName = '$resGivenName' WHERE id = '$id'")or die($aconn -> error);
+        if($position != $userValidator['position']){
+            $aconn -> query("UPDATE admin SET position = '$position' WHERE adminID = '$resID'")or die($aconn -> error);
         }else{
         }
 
-        if($resType != $userValidator['resType']){
-            $aconn -> query("UPDATE residents SET resType = '$resType' WHERE id = '$id'")or die($aconn -> error);
+        if($passPart != $userValidator['passwordHash']){
+            $aconn -> query("UPDATE admin SET passwordHash = '$passPart' WHERE adminID = '$resID'")or die($aconn -> error);
         }else{
         }
 
-        if($resState != $userValidator['resState']){
-            $aconn -> query("UPDATE residents SET resState = '$resState' WHERE id = '$id'")or die($aconn -> error);
-        }else{
-        }
 
-        if($mobiNumbTwo != $userValidator['mobiNumbTwo']){
-            $aconn -> query("UPDATE residents SET mobiNumbTwo = '$mobiNumbTwo' WHERE id = '$id'")or die($aconn -> error);
-        }else{
-        }
-
-        if($sex != $userValidator['sex']){
-            $aconn -> query("UPDATE residents SET sex = '$sex' WHERE id = '$id'")or die($aconn -> error);
-        }else{
-        }
 
     
 
         echo    "<script>
                 window.alert('Admin Account Edited');
-                window.location.href = 'logout.php';
+                window.location.href = 'dashboard.admins.php';
                 </script>";
 
     }  
