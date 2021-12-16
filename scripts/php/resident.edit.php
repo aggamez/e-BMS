@@ -23,6 +23,8 @@
                           <img class="image" src="<?php echo $row['resImg'] ?>" width="200" height="200">
                         </div>
                         <input class="form-control w-auto" type="file" id="resImg" name="resImg">
+                        <input type="text" class="form-control bg-gray-50 border-2 bd-light-pink-500 inter-500" 
+                          id="id" name="id" placeholder="ID" value="<?php echo $row['id'] ?>" hidden>
                       </div>
                     </div>
                   </div>
@@ -332,7 +334,7 @@
                 <hr>
 
                 <div class="d-flex justify-content-center align-items-center mt-3">
-                        <button type="submit" name="addResident" id="editResident"
+                        <button type="submit" name="editResident" id="editResident"
                         class="btn bg-green-200 border w-auto text-center">Edit Resident</button>
                 </div>
 

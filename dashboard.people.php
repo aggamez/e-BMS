@@ -59,10 +59,6 @@ $brgySpsh = $xml-> splash;
               </a>
             </li>
             <li>
-              <a href="dashboard.status.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                <span>Barangay Status</span>
-              </a>
             </li>
             <li class="my-2"><hr class="dropdown-divider bg-light" /></li>
             <li>
@@ -94,14 +90,6 @@ $brgySpsh = $xml-> splash;
                       <span>Residents</span>
                     </a>
                   </li>
-                  <li>
-                    <a href="dashboard.violations.php" class="nav-link px-3">
-                      <span class="me-2"
-                        ><i class="bi bi-speedometer2"></i
-                      ></span>
-                      <span>Violation Records</span>
-                    </a>
-                  </li>
                 </ul>
               </div>
             </li>
@@ -127,6 +115,12 @@ $brgySpsh = $xml-> splash;
               <a href="dashboard.admins.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-graph-up"></i></span>
                 <span>Accounts</span>
+              </a>
+            </li>
+            <li>
+              <a href="dashboard.adconfig.php" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Logs</span>
               </a>
             </li>
             <li>
@@ -160,7 +154,7 @@ $brgySpsh = $xml-> splash;
                     <div class="container d-flex flex-row gap-5 bg-warm-gray-800 py-3 px-2">
                       <form class="d-flex flex-row flex-grow-1">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success " type="submit"><i class="bi bi-search"></i></button>
+                        <button class="btn bg-green-400" type="submit"><i class="bi bi-search"></i></button>
                       </form>
 
                       <a class="btn btn-sm bg-green-400 align-items-center d-flex flex-row justify-content-center" href=""
@@ -445,7 +439,7 @@ $brgySpsh = $xml-> splash;
                               <i class="bi bi-card-text"></i>                   
                           </div>
                           <select class="custom-select w-auto rounded-0 rounded-end border-2 bd-light-pink-500 px-1" 
-                             data-live-search="true" id="purok" name="purok" >
+                             data-live-search="true" id="resID" name="resID" >
                                 <option value="0" selected>Purok</option>
                                 <?php 
                                 include 'scripts/php/admin.actions.php';

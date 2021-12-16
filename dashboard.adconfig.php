@@ -25,7 +25,7 @@ $brgySpsh = $xml-> splash;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-dark bg-dark" tabindex="2">
+<nav class="navbar navbar-dark bg-dark" tabindex="2">
       <div class="container-fluid">
         <div class="navbar-brand">
         <a class=" btn btn-sm bg-cool-gray-600 true-gray-50" data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="sidebar">
@@ -59,10 +59,6 @@ $brgySpsh = $xml-> splash;
               </a>
             </li>
             <li>
-              <a href="dashboard.status.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                <span>Barangay Status</span>
-              </a>
             </li>
             <li class="my-2"><hr class="dropdown-divider bg-light" /></li>
             <li>
@@ -87,19 +83,11 @@ $brgySpsh = $xml-> splash;
               <div class="collapse" id="residents">
                 <ul class="navbar-nav ps-3">
                   <li>
-                    <a href="dashboard.people.php" class="nav-link px-3">
+                    <a href="dashboard.people.php" class="nav-link px-3 active">
                       <span class="me-2"
                         ><i class="bi bi-speedometer2"></i
                       ></span>
                       <span>Residents</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="dashboard.violations.php" class="nav-link px-3">
-                      <span class="me-2"
-                        ><i class="bi bi-speedometer2"></i
-                      ></span>
-                      <span>Violation Records</span>
                     </a>
                   </li>
                 </ul>
@@ -130,7 +118,13 @@ $brgySpsh = $xml-> splash;
               </a>
             </li>
             <li>
-              <a href="dashboard.adconfig.php" class="nav-link px-3 active">
+              <a href="dashboard.adconfig.php" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Logs</span>
+              </a>
+            </li>
+            <li>
+              <a href="dashboard.adconfig.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-table"></i></span>
                 <span>Config</span>
               </a>

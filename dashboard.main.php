@@ -40,7 +40,6 @@ $brgySpsh = $xml-> splash;
         <a class="brand-text nav-link active d-inline-flex align-middle disable">Barangay <?php echo $brgyName ?></a>
 
       </div>
-
         
       </div>
     </nav>
@@ -60,16 +59,12 @@ $brgySpsh = $xml-> splash;
               </div>
             </li>
             <li>
-              <a href="dashboard.main.php" class="nav-link px-3 active">
+              <a href="dashboard.main.php" class="nav-link px-3 ">
                 <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                 <span>Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="dashboard.status.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                <span>Barangay Status</span>
-              </a>
             </li>
             <li class="my-2"><hr class="dropdown-divider bg-light" /></li>
             <li>
@@ -94,19 +89,11 @@ $brgySpsh = $xml-> splash;
               <div class="collapse" id="residents">
                 <ul class="navbar-nav ps-3">
                   <li>
-                    <a href="dashboard.people.php" class="nav-link px-3">
+                    <a href="dashboard.people.php" class="nav-link px-3 active">
                       <span class="me-2"
                         ><i class="bi bi-speedometer2"></i
                       ></span>
                       <span>Residents</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="dashboard.violations.php" class="nav-link px-3">
-                      <span class="me-2"
-                        ><i class="bi bi-speedometer2"></i
-                      ></span>
-                      <span>Violation Records</span>
                     </a>
                   </li>
                 </ul>
@@ -134,6 +121,12 @@ $brgySpsh = $xml-> splash;
               <a href="dashboard.admins.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-graph-up"></i></span>
                 <span>Accounts</span>
+              </a>
+            </li>
+            <li>
+              <a href="dashboard.adconfig.php" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Logs</span>
               </a>
             </li>
             <li>

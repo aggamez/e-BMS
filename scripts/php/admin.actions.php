@@ -488,7 +488,7 @@
 
                         $aconn -> query("INSERT INTO logs (timestamp, action, processedBy) VALUES('$dateTime','$string','$processedBy')") or die(mysqli_error($aconn));
                         echo    "<script>
-                            window.alert('Edit Complete');
+                            window.alert('Create Complete!');
                             window.location.href = 'dashboard.people.php';
                             </script>";
                     } else {
@@ -502,6 +502,7 @@
     }
 
     if(isset($_POST['editResident'])){
+        $id = $_POST['id'];
         $familyName = $_POST['familyName'];
         $givenName = $_POST['givenName'];
         $middleName = $_POST['middleName'];
@@ -555,119 +556,152 @@
 
         $transactionID = $year . $month . $day . $hour . $minute . $second;
 
-        $target_dir = "image/";
-            $target_file = $target_dir . basename($_FILES["resImg"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-            $check = getimagesize($_FILES["resImg"]["tmp_name"]);
-            if($check !== false) {
-                $uploadOk = 1;
-            } else {
-            $uploadOk = 0;
-            }
-
-            if ($_FILES["resImg"]["size"] > 50000000){
-                $uploadOk = 0;
-            }
-
-            if($imageFileType != "png") {
-                    echo    "<script>
-                            window.alert('Only PNG images!');
-                            window.location.href = 'dashboard.people.php';
-                            </script>";
-                $uploadOk = 0;
-                }
-
-                if ($uploadOk == 0) {
-                    echo    "<script>
-                            window.alert('Upload Incomplete!');
-                            window.location.href = 'dashboard.people.php';
-                            </script>";
-                    // if everything is ok, try to upload file
-                    } else {
-                    $fileName = $target_dir . $id . ".png";
-
-                    if (move_uploaded_file($_FILES["resImg"]["tmp_name"], $fileName)) {
-                        echo    "<script>
-                            window.alert('Edit Complete');
-                            window.location.href = 'dashboard.people.php';
-                            </script>";
-                    } else {
-                        echo    "<script>
-                            window.alert('Error!');
-                            window.location.href = 'dashboard.people.php';
-                            </script>";
-                }
-                }
-
-        $userChecker = $dconn -> query("SELECT * FROM residents WHERE id = '$id'")or die($dconn -> error);
+        $userChecker = $aconn -> query("SELECT * FROM residents WHERE id = '$id'")or die($aconn -> error);
         $userValidator = $userChecker -> fetch_assoc();
 
         if($givenName != $userValidator['givenName']){
-            $dconn -> query("UPDATE residents SET givenName = '$givenName' WHERE id = '$id'")or die($dconn -> error);
+            $aconn -> query("UPDATE residents SET givenName = '$givenName' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
         if($familyName != $userValidator['familyName']){
-            $dconn -> query("UPDATE residents SET familyName = '$familyName' WHERE id = '$id'")or die($dconn -> error);
+            $aconn -> query("UPDATE residents SET familyName = '$familyName' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
         if($middleName != $userValidator['middleName']){
-            $dconn -> query("UPDATE residents SET middleName = '$middleName' WHERE id = '$id'")or die($dconn -> error);
+            $aconn -> query("UPDATE residents SET middleName = '$middleName' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
         if($alias != $userValidator['alias']){
-            $dconn -> query("UPDATE residents SET alias = '$alias' WHERE id = '$id'")or die($dconn -> error);
+            $aconn -> query("UPDATE residents SET alias = '$alias' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
         if($faceMarks != $userValidator['faceMarks']){
-            $dconn -> query("UPDATE residents SET faceMarks = '$faceMarks' WHERE id = '$id'")or die($dconn -> error);
+            $aconn -> query("UPDATE residents SET faceMarks = '$faceMarks' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
-        if($yearLvl != $userValidator['yearLevel']){
-            $dconn -> query("UPDATE residents SET familyName = '$yearLvl' WHERE id = '$id'")or die($dconn -> error);
+        if($birthDate != $userValidator['birthDate']){
+            $aconn -> query("UPDATE residents SET birthDate = '$birthDate' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
-        if($program != $userValidator['program']){
-            $dconn -> query("UPDATE residents SET program = '$program' WHERE id = '$id'")or die($dconn -> error);
+        if($birthPlace != $userValidator['birthPlace']){
+            $aconn -> query("UPDATE residents SET birthPlace = '$birthPlace' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
         if($email != $userValidator['email']){
-            $dconn -> query("UPDATE residents SET email = '$email' WHERE id = '$id'")or die($dconn -> error);
+            $aconn -> query("UPDATE residents SET email = '$email' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
-        if($contact != $userValidator['contactNumber']){
-            $dconn -> query("UPDATE residents SET contactNumber = '$contact' WHERE id = '$id'")or die($dconn -> error);
+        if($homeNumbOne != $userValidator['homeNumbOne']){
+            $aconn -> query("UPDATE residents SET homeNumbOne = '$homeNumbOne' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($homeNumbTwo != $userValidator['homeNumbTwo']){
+            $aconn -> query("UPDATE residents SET homeNumbTwo = '$homeNumbTwo' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($mobiNumbOne != $userValidator['mobiNumbOne']){
+            $aconn -> query("UPDATE residents SET mobiNumbOne = '$mobiNumbOne' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($mobiNumbTwo != $userValidator['mobiNumbTwo']){
+            $aconn -> query("UPDATE residents SET mobiNumbTwo = '$mobiNumbTwo' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($occupation != $userValidator['occupation']){
+            $aconn -> query("UPDATE residents SET occupation = '$occupation' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($sector != $userValidator['sector']){
+            $aconn -> query("UPDATE residents SET sector = '$sector' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($civilStatus != $userValidator['civilStatus']){
+            $aconn -> query("UPDATE residents SET civilStatus = '$civilStatus' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($nationality != $userValidator['nationality']){
+            $aconn -> query("UPDATE residents SET nationality = '$nationality' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($faith != $userValidator['faith']){
+            $aconn -> query("UPDATE residents SET faith = '$faith' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($spouseName != $userValidator['spouseName']){
+            $aconn -> query("UPDATE residents SET spouseName = '$spouseName' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($spouseOccu != $userValidator['spouseOccu']){
+            $aconn -> query("UPDATE residents SET spouseOccu = '$spouseOccu' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($voterState != $userValidator['voterState']){
+            $aconn -> query("UPDATE residents SET voterState = '$voterState' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($cityAdd != $userValidator['cityAdd']){
+            $aconn -> query("UPDATE residents SET cityAdd = '$cityAdd' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($provAdd != $userValidator['provAdd']){
+            $aconn -> query("UPDATE residents SET provAdd = '$provAdd' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($purok != $userValidator['purok']){
+            $aconn -> query("UPDATE residents SET purok = '$purok' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($resType != $userValidator['resType']){
+            $aconn -> query("UPDATE residents SET resType = '$resType' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($resState != $userValidator['resState']){
+            $aconn -> query("UPDATE residents SET resState = '$resState' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($mobiNumbTwo != $userValidator['mobiNumbTwo']){
+            $aconn -> query("UPDATE residents SET mobiNumbTwo = '$mobiNumbTwo' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
         if($sex != $userValidator['sex']){
-            $dconn -> query("UPDATE residents SET sex = '$sex' WHERE id = '$id'")or die($dconn -> error);
+            $aconn -> query("UPDATE residents SET sex = '$sex' WHERE id = '$id'")or die($aconn -> error);
         }else{
         }
 
-        if($date != $userValidator['birthDate']){
-            $dconn -> query("UPDATE residents SET birthDate = '$date' WHERE id = '$id'")or die($dconn -> error);
-        }else{
-        }
+        $string = "Edited Resident " . $ID . " " . $transactionID; 
 
-        if($pass != $userValidator['pass']){
-            $dconn -> query("UPDATE residents SET pass = '$pass' WHERE id = '$id'")or die($dconn -> error);
-        }else{
-        }
+        $aconn -> query("INSERT INTO logs (timestamp, action, processedBy) VALUES('$dateTime','$string','$processedBy')") or die(mysqli_error($aconn));
 
-        echo "<script>
-                alert('Values edited!');
-                window.location.replace('datalog.php');
-        </script>";
+            echo "<script>
+                alert('Resident data edited!');
+                window.location.replace('dashboard.people.php');
+            </script>";
 
     }
 
@@ -703,4 +737,156 @@
                 window.location.replace('dashboard.people.php');
             </script>";
     } 
+
+    if(isset($_POST['addAdmin'])){
+        $resID = $_POST['resID'];
+
+        $residents = $aconn -> query("SELECT * FROM residents where id='$resID'") or die($aconn -> error);
+        $list = $residents -> fetch_assoc();
+
+        $resFamName = $list["familyName"];
+        $resGivenName = $list["givenName"];
+        $resMiddleName = $list["middleName"];
+        $accName = $list["alias"];
+
+        $position = "";
+
+        $accPass = "admin";
+
+        $dateTime = date("Y-m-d H:i:s");
+        $dateTimeParts = explode(" ", $dateTime);
+
+        $dateParts = explode("-", $dateTimeParts[0]);
+        $year = $dateParts[0];
+        $month = $dateParts[1];
+        $day = $dateParts[2];
+
+        $timeParts = explode(":", $dateTimeParts[1]);
+        $hour = $timeParts[0];
+        $min = $timeParts[1];
+        $sec = $timeParts[2];
+
+        $nameSlice = substr($accName, 0, 2);
+
+        //16-character ID uniquely made with date and time of creation and first 2 account name
+        $accID = $nameSlice . $year . $month . $day . $hour . $min . $sec;
+
+        
+
+        //Salt = add more security to password, implemented both before and after password string
+        //1st, 3rd, 4th, 7th, 9th,and 10th character of the id, and add year again
+        $charaOne = substr($accID, 0, 1);
+        $charaTri = substr($accID, 2, 1);
+        $charaQua= substr($accID, 3, 1);
+        $charaSev = substr($accID, 6, 1);
+        $charaNin = substr($accID, 8, 1);
+        $charaTen = substr($accID, 9, 1);
+        $salt = $charaOne . $charaTri . $charaQua . $charaSev . $charaNin . $charaTen . $year;
+
+        $passPart = $salt . $accPass . $salt;
+        $accPassHash = hash('md5', $passPart);
+
+        $aconn -> query("INSERT INTO admin 
+            VALUES('$accID', '$accName', '$resID', '$resFamName', '$resGivenName', '$resFamName', '$position', '$accPassHash', '$dateTime') ")
+            or die($aconn -> error);
+
+    
+
+        echo    "<script>
+                window.alert('Admin Account Created');
+                window.location.href = 'logout.php';
+                </script>";
+
+    }  
+    
+    if(isset($_POST['editAdmin'])){
+        $resID = $_POST['resID'];
+
+        $residents = $aconn -> query("SELECT * FROM residents where id='$resID'") or die($aconn -> error);
+        $list = $residents -> fetch_assoc();
+
+        $resFamName = $list["familyName"];
+        $resGivenName = $list["givenName"];
+        $resMiddleName = $list["middleName"];
+        $accName = $list["alias"];
+
+        $position = "";
+
+        $accPass = "admin";
+
+        $dateTime = date("Y-m-d H:i:s");
+        $dateTimeParts = explode(" ", $dateTime);
+
+        $dateParts = explode("-", $dateTimeParts[0]);
+        $year = $dateParts[0];
+        $month = $dateParts[1];
+        $day = $dateParts[2];
+
+        $timeParts = explode(":", $dateTimeParts[1]);
+        $hour = $timeParts[0];
+        $min = $timeParts[1];
+        $sec = $timeParts[2];
+
+        $nameSlice = substr($accName, 0, 2);
+
+        //16-character ID uniquely made with date and time of creation and first 2 account name
+        $accID = $nameSlice . $year . $month . $day . $hour . $min . $sec;
+
+        
+
+        //Salt = add more security to password, implemented both before and after password string
+        //1st, 3rd, 4th, 7th, 9th,and 10th character of the id, and add year again
+        $charaOne = substr($accID, 0, 1);
+        $charaTri = substr($accID, 2, 1);
+        $charaQua= substr($accID, 3, 1);
+        $charaSev = substr($accID, 6, 1);
+        $charaNin = substr($accID, 8, 1);
+        $charaTen = substr($accID, 9, 1);
+        $salt = $charaOne . $charaTri . $charaQua . $charaSev . $charaNin . $charaTen . $year;
+
+        $passPart = $salt . $accPass . $salt;
+        $accPassHash = hash('md5', $passPart);
+
+
+        $userChecker = $aconn -> query("SELECT * FROM admin WHERE adminID = '$id'")or die($aconn -> error);
+        $userValidator = $userChecker -> fetch_assoc();
+
+        if($resFamName != $userValidator['resFamName']){
+            $aconn -> query("UPDATE residents SET resFamName = '$resFamName' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($resGivenName != $userValidator['resGivenName']){
+            $aconn -> query("UPDATE residents SET resGivenName = '$resGivenName' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($resType != $userValidator['resType']){
+            $aconn -> query("UPDATE residents SET resType = '$resType' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($resState != $userValidator['resState']){
+            $aconn -> query("UPDATE residents SET resState = '$resState' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($mobiNumbTwo != $userValidator['mobiNumbTwo']){
+            $aconn -> query("UPDATE residents SET mobiNumbTwo = '$mobiNumbTwo' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+        if($sex != $userValidator['sex']){
+            $aconn -> query("UPDATE residents SET sex = '$sex' WHERE id = '$id'")or die($aconn -> error);
+        }else{
+        }
+
+    
+
+        echo    "<script>
+                window.alert('Admin Account Edited');
+                window.location.href = 'logout.php';
+                </script>";
+
+    }  
 ?>
